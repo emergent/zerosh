@@ -13,7 +13,6 @@ use std::{
     collections::{BTreeMap, HashMap, HashSet},
     ffi::CString,
     mem::replace,
-    path::PathBuf,
     process::exit,
     sync::mpsc::{channel, sync_channel, Receiver, Sender, SyncSender},
     thread,
@@ -275,11 +274,11 @@ impl Worker {
         true
     }
 
-    fn run_jobs(&mut self, shell_tx: &SyncSender<ShellMsg>) -> bool {
+    fn run_jobs(&mut self, _shell_tx: &SyncSender<ShellMsg>) -> bool {
         true
     }
 
-    fn run_cd(&mut self, args: &[&str], shell_tx: &SyncSender<ShellMsg>) -> bool {
+    fn run_cd(&mut self, _args: &[&str], _shell_tx: &SyncSender<ShellMsg>) -> bool {
         true
     }
 
