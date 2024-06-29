@@ -547,8 +547,13 @@ where
 type CmdResult<'a> = Result<Vec<(&'a str, Vec<&'a str>)>, DynError>;
 
 /// コマンドをパース
-fn parse_cmd(_line: &str) -> CmdResult {
-    Ok(vec![("ls", vec!["ls"])])
+fn parse_cmd(line: &str) -> CmdResult {
+    let tokens: Vec<&str> = line.split_ascii_whitespace().collect();
+    if tokens[0].is_empty() {
+        Err("empty command".into())
+    } else {
+        Ok(vec![(tokens[0], tokens)])
+    }
 }
 
 /// プロセスグループIDを指定して fork & exec.
